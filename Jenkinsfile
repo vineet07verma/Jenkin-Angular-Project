@@ -8,7 +8,8 @@ node {
         checkout scm
     }
 
-    stage('npm install') {
+    stage('angular cli & npm install') {
+        sh "npm install -g @angular/cli"
         sh "npm install"
     }
 
