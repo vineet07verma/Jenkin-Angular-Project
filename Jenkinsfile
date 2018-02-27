@@ -13,10 +13,10 @@ node {
     }
 
    stage('Karma tests runner') {
-        sh "npm run test"
+        //sh "npm run test"
     }
   
     stage('protractor tests') {
-        sh "npm run e2e"
+        //sh "npm run e2e"
     }
 }
