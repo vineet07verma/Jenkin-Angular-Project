@@ -12,6 +12,10 @@ node {
         sh "npm install"
     }
 
+   stage('Karma tests runner') {
+        sh "npm run test"
+    }
+  
     stage('protractor tests') {
         sh "npm run e2e"
     }
