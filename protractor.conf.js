@@ -9,7 +9,10 @@ exports.config = {
     './e2e/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    "chromeOptions": {
+      binary: "/usr/bin/google-chrome-stable"
+    },
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
