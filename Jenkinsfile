@@ -9,7 +9,7 @@ node {
     }
 
     stage('angular cli & npm install') {
-        sh "sudo npm install"
+        sh "npm install"
     }
 
     stage('unit tests') {
