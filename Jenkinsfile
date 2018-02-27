@@ -19,4 +19,8 @@ node {
     stage('protractor tests') {
         //sh "npm run e2e"
     }
+  
+   stage('Angular Build') {
+        sh "npm run build --prod --env=dev"
+    }
 }
