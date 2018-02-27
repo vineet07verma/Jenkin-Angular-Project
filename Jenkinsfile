@@ -12,10 +12,6 @@ node {
         sh "npm install"
     }
 
-    stage('unit tests') {
-        sh "ng test --watch false"
-    }
-
     stage('protractor tests') {
         sh "npm run e2e"
     }
