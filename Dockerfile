@@ -3,6 +3,8 @@
 # We label our stage as 'builder'
 FROM node:9.6.1-alpine as builder
 
+COPY package.json ./
+
 RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
@@ -11,7 +13,7 @@ RUN npm i
 
 RUN mkdir /ng-app
 
-RUN npm cp -R ./node_modules ./ng-app
+RUN cp -R ./node_modules ./ng-app
 
 WORKDIR /ng-app
 
