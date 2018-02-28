@@ -6,5 +6,5 @@ FROM nginx:1.13.9-alpine
 
 RUN cd /etc/nginx
 
-RUN ls -l
+RUN cat nginx.conf
 
