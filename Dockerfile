@@ -4,8 +4,6 @@
 
 FROM nginx:1.13.9-alpine
 
-RUN ls -l
-
 RUN cd /etc/nginx
 
 RUN ls -l
