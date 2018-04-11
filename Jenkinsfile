@@ -9,15 +9,22 @@ node {
     }
 
     stage('checkout') {
+        deleteDir()
         checkout scm
     }
 
     stage('angular cli & npm install') {
         // sh "npm install"
+       // withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
+            // sh 'npm install'
+        // }
     }
 
    stage('Karma tests runner') {
-        //sh "npm run test"
+        withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
+          sh 'npm run test --progress=false --watch false'
+        }
+        junit '**/test-results.xml'
     }
   
     stage('protractor tests') {
@@ -25,6 +32,17 @@ node {
     }
   
    stage('Angular Build') {
+        milestone()
         sh "npm run build --prod --env=dev"
+    }
+  
+  stage('Archive') {
+        sh 'tar -cvzf dist.tar.gz --strip-components=1 dist'
+        archive 'dist.tar.gz'
+    }
+
+    stage('Deploy') {
+        milestone()
+        echo "Deploying..."
     }
 }
