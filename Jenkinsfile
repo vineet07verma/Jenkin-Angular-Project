@@ -4,8 +4,8 @@ node {
   
     env.PATH = "${nodeHome}/bin:${env.PATH}"
     stage('check tools') {
-        // sh "node -v"
-        // sh "npm -v"
+         sh "node -v"
+         sh "npm -v"
     }
 
     stage('checkout') {
@@ -15,20 +15,20 @@ node {
 
     stage('angular cli & npm install') {
         // sh "npm install"
-       // withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
-            // sh 'npm install'
-        // }
+        withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
+            sh 'npm install'
+        }
     }
 
    stage('Karma tests runner') {
-        // withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
-          // sh 'npm run test --progress=false --watch false'
-        // }
+         withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
+             sh 'npm run test --progress=false --watch false'
+          }
         // junit '**/test-results.xml'
     }
   
     stage('protractor tests') {
-        //sh "npm run e2e"
+        sh "npm run e2e"
     }
   
    stage('Angular Build') {
