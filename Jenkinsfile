@@ -45,5 +45,6 @@ node {
     stage('Deploy') {
         milestone()
         echo "Deploying..."
+        sh 'cp -r dist/* /usr/share/nginx/html/'
     }
 }
