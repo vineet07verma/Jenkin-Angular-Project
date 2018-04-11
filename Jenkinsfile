@@ -22,7 +22,7 @@ node {
 
    stage('Karma tests runner') {
          withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
-             sh 'npm run test --progress=false --watch false'
+             sh 'ng test --browser PhantomJS --watch false'
           }
         // junit '**/test-results.xml'
     }
