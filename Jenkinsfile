@@ -16,6 +16,7 @@ node {
     stage('angular cli & npm install') {
         // sh "npm install"
         withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
+            sh 'npm install --save intl'
             sh 'npm install'
         }
     }
