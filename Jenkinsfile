@@ -29,7 +29,7 @@ node {
     }
   
     stage('protractor tests') {
-        sh "npm run e2e"
+       // sh "npm run e2e"
     }
   
    stage('Angular Build') {
