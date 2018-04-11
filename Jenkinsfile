@@ -13,7 +13,7 @@ node {
     }
 
     stage('angular cli & npm install') {
-        sh "npm install"
+        // sh "npm install"
     }
 
    stage('Karma tests runner') {
