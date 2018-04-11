@@ -11,7 +11,8 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     "chromeOptions": {
-      binary: "/usr/bin/google-chrome-stable"
+      binary: "/usr/bin/google-chrome-stable",
+      args: [ "--headless", "--disable-gpu", "--window-size=800x600" ]
     },
   },
   directConnect: true,
