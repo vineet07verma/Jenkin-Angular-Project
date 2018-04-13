@@ -21,32 +21,7 @@ node {
         }
     }
 
-   stage('Karma tests runner') {
-         withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
-             sh 'ng test --browser PhantomJS --watch false'
-          }
-        // junit '**/test-results.xml'
-    }
-  
-    stage('protractor tests') {
+   stage('protractor tests') {
        // sh "npm run e2e"
-    }
-  
-   stage('Angular Build') {
-        milestone()
-        sh "npm run build --prod --env=dev"
-    }
-  
-  stage('Archive') {
-        sh 'tar -cvzf dist.tar.gz --strip-components=1 dist'
-        archive 'dist.tar.gz'
-    }
-
-    stage('Deploy') {
-        milestone()
-        echo "Deleting old existing files"
-        sh 'rm /usr/share/nginx/html/*'
-        echo "Deploying..."
-        sh 'cp -rf /var/lib/jenkins/workspace/AngularJenkinsProject/dist/* /usr/share/nginx/html/'
     }
 }
