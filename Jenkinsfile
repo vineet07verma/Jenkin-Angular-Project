@@ -41,8 +41,8 @@ node {
     stage('Deploy') {
         milestone()
         echo "Deleting old existing files"
-        sh 'sudo rm /usr/share/nginx/html/*'
+        sh 'sudo -S rm /usr/share/nginx/html/*'
         echo "Deploying..."
-        sh 'sudo cp -rf /var/lib/jenkins/workspace/AngularJenkinsProject/dist/* /usr/share/nginx/html/'
+        sh 'cp -rf /var/lib/jenkins/workspace/AngularJenkinsProject/dist/* /usr/share/nginx/html/'
     }
 }
