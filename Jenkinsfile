@@ -1,6 +1,6 @@
 node {
   
-    def nodeHome = tool name: 'nodejs', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+    /* def nodeHome = tool name: 'nodejs', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
   
     env.PATH = "${nodeHome}/bin:${env.PATH}"
     stage('Checking Node and NPM versions') {
@@ -36,13 +36,13 @@ node {
     stage('Archive') {
         sh 'tar -cvzf dist.tar.gz --strip-components=1 dist'
         archive 'dist.tar.gz'
-    }
+    } */
 
     stage('Deploy') {
         milestone()
         echo "Deleting old existing files"
-        sh 'rm /usr/share/nginx/html/*'
+        sh 'sudo rm /usr/share/nginx/html/*'
         echo "Deploying..."
-        sh 'cp -rf /var/lib/jenkins/workspace/AngularJenkinsProject/dist/* /usr/share/nginx/html/'
+        sh 'sudo cp -rf /var/lib/jenkins/workspace/AngularJenkinsProject/dist/* /usr/share/nginx/html/'
     }
 }
